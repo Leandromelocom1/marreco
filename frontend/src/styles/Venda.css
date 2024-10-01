@@ -1,0 +1,146 @@
+/* Melhorias para o layout */
+.container {
+  max-width: 100%; /* Para ocupar toda a largura da tela */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Para garantir que os produtos fiquem bem distribuídos */
+}
+
+.card {
+  border-radius: 15px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Adiciona um efeito de zoom ao passar o mouse */
+}
+
+.col-md-2 {
+  flex: 1 1 calc(20% - 20px); /* Define o tamanho das colunas para ocupar bem a tela */
+  margin: 10px; /* Espaçamento entre os produtos */
+}
+
+.produtos-disponiveis {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.cupom-fiscal {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pedido {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  width: 25%;
+}
+
+.carrinho-vazio {
+  font-size: 1.2rem;
+  color: #777;
+  text-align: center;
+}
+
+.valor-total {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.pagamento-btn {
+  margin-bottom: 15px;
+  width: 500%;
+  height: 50px;
+  
+}
+
+
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card.selecionado {
+  border: 2px solid #007bff; /* Destacar com uma borda azul */
+}
+
+.card.selecionado .card-body {
+  background-color: #e9faff; /* Fundo levemente azul ao selecionar */
+}
+
+.pagamento-modal, .cupom-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.pagamento-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+.pagamento-modal button, .cupom-modal button {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.cupom-imprimir {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+.cupom-imprimir h3, .cupom-imprimir h4 {
+  margin: 0 0 10px;
+}
+
+@media print {
+  .pagamento-overlay, .pagamento-modal, .cupom-modal, .btn {
+    display: none;
+  }
+  
+  #cupom-fiscal {
+    display: block;
+  }
+}
+
+/* Venda.css */
+
+/* Estilos de impressão */
+@media print {
+  body * {
+    visibility: hidden; /* Oculta todo o conteúdo */
+  }
+  #cupom-fiscal, #cupom-fiscal * {
+    visibility: visible; /* Apenas o cupom fiscal será visível */
+  }
+  #cupom-fiscal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Garante que o cupom ocupe toda a largura disponível */
+  }
+}
